@@ -8,7 +8,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 # 🔹 Function to write to Google Sheet
 def write_to_google_sheet(data):
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+    creds_json = json.loads(os.environ['GOOGLE_CREDS_JSON'])
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_json, scope)
     client = gspread.authorize(creds)
 
     sheet = client.open("TeamSkillsData").sheet1  # Make sure this matches your Google Sheet name
