@@ -1,0 +1,13 @@
+# Python Bytecode
+__pycache__/
+*.pyc
+
+# Virtual Environment
+.venv/
+
+# Secrets
+credentials.json
+.env
+
+# Generated
+responses.csv
